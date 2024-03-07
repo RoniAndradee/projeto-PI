@@ -6,7 +6,7 @@ Nesse repositório serão comitadas todas as alterações de código do projeto.
 Nosso projeto terá como foco o controle do fluxo de pessoas em setores de mercados. 
 
 ## Organização
-Nosso repositório será organizado em pastas por Sprints. E em cada pasta haverá todas as alterações feitas ao decorrer de cada uma das sprits 
+Esse repositório será organizado em pastas por Sprints. E em cada pasta haverá todas as alterações feitas ao decorrer de cada uma das sprits 
 
 ## Autores
 
