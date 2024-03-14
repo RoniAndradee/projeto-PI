@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador financeiro</title>
+</head>
+<body>
+
+ <h1>MKTECH</h1>
+
+ Valor bruto mensal <br><input type="number" id="input_valor"> <br> <br>
+
+ <button onclick="calcular()">Calcular lucro</button>
+ <div id="div_mensagem"></div>
+
+</body>
+
+<script>
+    function calcular() {
+        var valorBrutoM = input_valor.value
+        var roptura = valorBrutoM * 0.05;
+        var MediaLucro = valorBrutoM * 0.42;
+        
+        div_mensagem.innerHTML = `O seu valor bruto mensal é de R$${valorBrutoM}, a perda de faturamento mensal, por conta da roptura em média é de R$${roptura},
+        lucro esperado com o melhor controle de gerenciamento é de R$${MediaLucro}`
+        
+
+    }
+
+</script>
