@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora Financeira</title>
+        <style>
+            body{
+            font-size: 18px;
+            font-family: sans-serif;
+            background-color: rgb(224, 234, 243);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 450px;
+            padding: 20px;
+            border-radius: 30px;
+            background-color: rgb(215, 243, 250);
+            -webkit-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.66);
+            -moz-box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.66);
+            box-shadow: 4px 4px 11px -3px rgba(0,0,0,0.66);
+        }
+
+        .card input {
+            width: 200px;
+            height: 20px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+        }
+
+        .card button {
+            width: 200px;
+            height: 30px;
+            font-size: 18px;
+            border-radius: 15px;
+            margin: 15px 0 15px 0;
+        }
+
+        .card button:hover{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            Informe o seu nome: <input type="text" id="inputNome">
+            Informe o nome de seu mercado: <input type="text" id="inputMercado">
+            Informe a quantidade de setores do seu mercado: <input type="text" id="inputSetores">
+            Informe o faturamento bruto de seu mercado: <input type="text" id="inputFaturamento">
+            Informe o percentual de perda que seu mercado tem: <input type="text" id="inputPerda">
+
+            <button onclick="calcular()">Calcule os resultados</button>
+            <div id="divMensagem"></div>
+            <span>Deseja simular seus ganhos com a nossa solução?</span>
+            <button onclick="simularGanhos()">Simular ganhos</button>
+            <div id="divSimulacao"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    //mostrarei quanto o cliente perde de dinheiro em média em cada setor
+    //mostrarei quanto ele perde do faturamento mensal total em função da ruptura
+    //mostrarei uma mensagem em vermelhor negrito caso a perda seja maior que 5% do faturamento (valor esse que segundo pesquisas é o mais comum de se ter em mercados)
+    //mostrarei uma mensagem em verde simulando quanto ele ganharia se tivesse a nossa solução
+
+    var nome = "";
+    var nomeMercado = "";
+    var qtdSetores = 0; 
+    var faturamentoBruto = 0; 
+    var percentalPerda = 0; 
+    var perdaMensal = 0; 
+    var perdaSetorial = 0; 
+    var ganhos = 0;
+
+
+    function calcular() {
+        nome = inputNome.value;
+        nomeMercado = inputMercado.value;
+        qtdSetores = Number(inputSetores.value);
+        faturamentoBruto = Number(inputFaturamento.value);
+        percentalPerda = Number(inputPerda.value);
+
+        perdaMensal = (faturamentoBruto * percentalPerda) / 100;
+        perdaSetorial = perdaMensal / qtdSetores;
+
+        divMensagem.innerHTML = `Olá senhor(a) ${nome}, ao analisar os dados de seu mercado chegamos as seguintes conclusões:
+        <h3 style="text-align:center">Mercado: ${nomeMercado}</h3>
+        Seu mercado tem uma perda mensal de R$<b>${perdaMensal}</b> em função da ruptura.<br>
+        E tem em média uma perda de R$<b>${perdaSetorial}</b> em cada setor devido o mesmo problema.`;
+
+        if (perdaMensal >= faturamentoBruto * 0.05) {
+            divMensagem.innerHTML += `<br><br><b style="color:#ff0000">A sua taxa de perda mensal está em estado crítico! Você precisa urgentemente da nossa solução!</b><br><br>`;
+        }
+    }
+
+    function simularGanhos() {
+        ganhos = faturamentoBruto + faturamentoBruto * 0.05;
+        divSimulacao.innerHTML = `<b style="color:#00ff00">Ao contratar a nossa solução você teria um faturamento mensal de R$${ganhos}</b>`;
+    }
+</script>
