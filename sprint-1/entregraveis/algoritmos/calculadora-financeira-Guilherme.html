@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simulador Financeiro</title>
+    </head>
+    <body>
+
+        Insira a quantidade de itens que você vende por mês:<br><input type="number" id="input_qntVendido"><br><br>
+        Insira a quantidade que você ganha bruto no mês:<br><input type="number" id="input_ganho"><br><br>
+
+        <button onclick="calculo()">Ver aumentos com o sensor</button>
+        <div id="divMensagem"></div>
+    </body>
+</html>
+<script>
+    function calculo() {
+        var ganhoSS = Number(input_ganho.value)
+
+        var ganhoCS = ganhoSS * 1.05
+        var percaMes = ganhoCS - ganhoSS
+
+        var ganhoSSAnual = ganhoSS * 12
+        var ganhoCSAnual = ganhoCS * 12
+
+        var qntVendidoSS = Number(input_qntVendido.value)
+        var qntVendidoCS = qntVendidoSS * 1.42
+        var qntPerca = qntVendidoCS - qntVendidoSS
+
+        var qntVendidoSSAnual = qntVendidoSS * 12
+        var qntVendidoCSAnual = qntVendidoCS * 12
+        var qntDiferencaAnual = qntVendidoCSAnual - qntVendidoSSAnual
+
+        divMensagem.innerHTML = `<br>Com as suas vendas de <b>${qntVendidoSS}</b> itens por mês você está perdendo em média 42% do seu potencial de venda que seria de <b>${qntVendidoCS}</b> itens vendidos com a implementação de nossos sensores, assim reduzindo a sua perca em <b>${qntPerca}</b> itens mensais. Seu comércio vende em média <b>${qntVendidoSSAnual}</b> produtos anualmente mas com os nossos sensores suas vendas anuais iriam para <b>${qntVendidoCSAnual}</b> tendo um aumento de <b>${qntDiferencaAnual}</b> produtos vendidos!<br><br>Seus ganhos atualmente são de <b>R$${ganhoSS}</b> mensalmente, com o sistema de sensores em seu estabelecimento você passaria a ganhar em média <b>R$${ganhoCS}</b> mensalmente, diminuindo a sua perca mensal de <b>R$${percaMes}</b>para 0, você passara de ter uma renda anual de <b>R$${qntVendidoSSAnual}</b> para um de <b>R$${qntVendidoCSAnual}</b>! `
+    }
+</script>
