@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        Insira seu faturamento<br><input placeholder="700000" type="text" id="inputFaturamento"><br>
+        Insira a média de produtos por cliente<br><input placeholder="18" type="text" id="inputMedia"><br>
+        <button onclick="calcular()">Calcular</button><br>
+    </div>
+    <div id="divMostrar"></div>
+
+</body>
+
+</html> 
+
+<script>
+    var faturamento = 0;
+    var mediaProdutos = 0;
+    var mediaPossivel = 0;
+    var faturamentoPossivel = 0;
+
+
+    function calcular() {
+        mediaProdutos = inputMedia.value;
+        faturamento = inputFaturamento.value;
+        faturamentoPossivel = faturamento * 1.069;
+        mediaPossivel = mediaProdutos * 1.43;
+
+        divMostrar.innerHTML = `
+        seu prejuízo no faturamento pode chegar até 6,9%<br>
+        devido a má organização e exposição dos seus produtos<br>
+        seu faturamento é de ${faturamento}, minimizando ao maximo<br>
+        seu prejuízo, seu faturamento poderia chegar até ${faturamentoPossivel}<br><br>
+        
+
+        43% dos clientes que não encontram um produto não compram<br>
+        a sua média de produtos por cliente é de ${mediaProdutos}<br>
+        maximizando a venda por clientes sua média seria de ${mediaPossivel}<br><br>
+        
+        Nos da MKTECH temos o objetivo de entregar um serviço<br>
+        que ajude você a chegar o mais perto possivel desses números.
+        `
+    }
+
+
+</script>
