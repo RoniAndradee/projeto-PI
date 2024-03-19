@@ -34,7 +34,7 @@
         var perdasProdutosPorMes = ganhosProdutosPorMes * (0.05 * 0.42);
         var ganhosEsperados = perdasFaturamento - perdasEsperadasFaturamento;
 
-        divMensagem.innerHTML = `Após a analise de dados do mercado <b>${nome}</b>, chegamos às seguintes conclusões:"<br>
+        divMensagem.innerHTML = `Após a analise de dados do mercado <b>${nome}</b>, chegamos às seguintes conclusões:<br>
         Seu mercado teve uma perda de faturamento mensal de aproximadamente R$<b>${perdasFaturamento}</b> em função da ruptura, que corresponde a <b>${percentualPerdas * 100}%</b>.<br>
         Cerca de <b>${percentualPerdasVendas * 100}%</b> das pessoas que não encontram um produto na gôndola não compram nenhum produto parecido ou de outra marca, isso corresponde à aproximadamente <b>${perdasProdutosPorMes}</b> produtos.<br>
         Após adquirir nosso produto, o aumento do faturamento mensal esperado é de R$<b>${ganhosEsperados}</b>.`;
