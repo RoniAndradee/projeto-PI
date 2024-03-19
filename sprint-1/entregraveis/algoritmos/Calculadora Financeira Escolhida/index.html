@@ -6,29 +6,44 @@
     <title>Tela de Simulador Financeiro Murilo</title>
 </head>
 <body>
-    Digite o faturamento bruto do seu mercado: <input type="number" id="inputFaturamento"><br><br>
+    Digite o nome do seu mercado: <input type="text" id="inputNome"><br><br>
+    Digite o faturamento mensal do seu mercado: <input type="number" id="inputFaturamento"><br><br>
+    
+    Digite aproximadamente a quantidade de pessoas que entram no seu mercado por mês: <input type="number" id="inputPessoasPorMes"><br><br> 
+    Digite quantos produtos aproximadamente uma pessoa compra em média: <input type="number" id="inputProdutosPorPessoa"><br><br>
 
-    <button onclick="calcular()">Calcular dados</button> <br><br>
+    <button onclick="calcular()">SIMULAR DADOS</button><br><br>
 
-    <div id="divResposta"></div>
+    <div id="divMensagem"></div>
 </body>
 </html>
 <script>
-    var faturamentoBruto = 0;
-    var ganhos = 0;
-    var perdas = 0;
-    var percentualPerdaVenda = 0.42;
-    var percentualPerdaLucro = 0.05;
+    var percentualPerdasVendas = 0.42;
+    var percentualPerdas = 0.05;
+    var percentualPerdasEsperadas = 0.01;
 
     function calcular(){
+<<<<<<< HEAD
         faturamentoBruto = Number(inputFaturamento.value);
         perdaFaturamento = faturamentoBruto * percentualPerdaLucro;
         ganhos = faturamentoBruto + perdaFaturamento;
         perdaVendaProdutos = faturamentoBruto * percentualPerdaVenda;
+=======
+        var nome = inputNome.value;
+        var faturamento = Number(inputFaturamento.value);
+        var pessoasPorMes = Number(inputPessoasPorMes.value);
+        var produtosPorPessoa = Number(inputProdutosPorPessoa.value);
+>>>>>>> 13090cba87c56e3d20bf9d3d4185af9fb83ea9cf
         
-        
-    }
-    
-    
+        var perdasFaturamento = faturamento * percentualPerdas;
+        var perdasEsperadasFaturamento = faturamento * percentualPerdasEsperadas;
+        var ganhosProdutosPorMes = produtosPorPessoa * pessoasPorMes;
+        var perdasProdutosPorMes = ganhosProdutosPorMes * (0.05 * 0.42);
+        var ganhosEsperados = perdasFaturamento - perdasEsperadasFaturamento;
 
+        divMensagem.innerHTML = `Após a analise de dados do mercado <b>${nome}</b>, chegamos às seguintes conclusões:<br>
+        Seu mercado teve uma perda de faturamento mensal de aproximadamente R$<b>${perdasFaturamento}</b> em função da ruptura, que corresponde a <b>${percentualPerdas * 100}%</b>.<br>
+        Cerca de <b>${percentualPerdasVendas * 100}%</b> das pessoas que não encontram um produto na gôndola não compram nenhum produto parecido ou de outra marca, isso corresponde à aproximadamente <b>${perdasProdutosPorMes}</b> produtos.<br>
+        Após adquirir nosso produto, o aumento do faturamento mensal esperado é de R$<b>${ganhosEsperados}</b>.`;
+    }
 </script>

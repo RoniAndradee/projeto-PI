@@ -87,15 +87,3 @@ SELECT tipo AS 'Tipo de setor:',
     fluxoDiario AS 'Quantidade de pessoas no setor por dia:',
     date_format(dataFluxo, '%d/%m/%Y  -  %h:%i:%s  %p') AS 'Data da alteração do fluxo diário: '
     FROM setor ORDER BY fluxoDiario;
-
--- EXIBIÇÃO DO NOME, QUANTIDADE DE SETORES E ENDEREÇO DO MERCADO
-SELECT nome AS 'Nome do mercado:',
-	quantidadeSetores AS 'Quantidade de setores do mercado:',
-	concat('País: ', pais, ' |Estado: ', uf, ' |Cidade: ', cidade, ' |Bairro: ', bairro, ' |Logradouro: ', logradouro, ' |Número: ', numero) AS "Endereço do mercado:"
-	FROM mercado;
-
--- EXIBIÇÃO DO NOME, NOME DO MERCADO, EMAIL E SENHA DO RESPONSÁVEL
-SELECT concat(nomeResponsavel, ' é responsável pelo mercado: ', nomeMercado) AS 'Responsável: ',
-	email AS 'E-mail do responsável:',
-	senha AS 'Senha do responsável:'
-    FROM responsavel;
