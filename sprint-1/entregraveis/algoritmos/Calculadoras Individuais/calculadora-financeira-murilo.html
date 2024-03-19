@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Simulador Financeiro Murilo</title>
+</head>
+<body>
+    Digite o lucro bruto do seu mercado: <input type="number" id="inputLucroBruto"><br><br>
+
+    Digite aproximadamente a quantidade de pessoas que entram no seu mercado por mês: <input type="number" id="inputPessoasPorMes"><br><br>
+    Digite quantos reais aproximadamente uma pessoa compra em média por mês: <input type="number" id="inputGanhosPorPessoa"><br><br>
+
+    <button onclick="calcular()">Calcular dados</button><br><br>
+
+    <div id="divResposta"></div>
+</body>
+</html>
+<script>
+    function calcular() {
+        var lucroBruto = Number(inputLucroBruto.value);
+
+        var pessoasPorMes = Number(inputPessoasPorMes.value);
+        var ganhosPorPessoa = Number(inputGanhosPorPessoa.value);
+
+        // site: info varejo | url: https://www.infovarejo.com.br/o-que-sao-rupturas-e-como-evitar/
+        var perdasPorRupturaNoLucroBruto = lucroBruto * 0.05;
+
+        // pesquisa: Abras | site: Datasales Blog | url: https://blog.datasales.io/ruptura-de-estoque/
+        var pessoasQueNaoCompramNoMercado = 0.42;
+        var pessoasQueAdiamACompra = 0.17;
+
+        // site: estado de minas economia | exemplo usado: supermercados ABC | url: https://www.em.com.br/app/noticia/economia/2013/11/03/internas_economia,466651/falta-de-planejamento-e-seguranca-levam-prejuizos-milionarios-aos-supermercados.shtml#google_vignette
+        var diminuicaoPerdasPorRupturaNoLucroBruto = lucroBruto * 0.013;
+
+        var ganhosPorMes = ganhosPorPessoa * pessoasPorMes;
+        var ganhosPerdidosPorMes = ganhosPorMes * pessoasQueNaoCompramNoMercado;
+        var ganhosAdiadosPorMes = ganhosPorMes * pessoasQueAdiamACompra;
+
+        divResposta.innerHTML = `As perdas por ruptura no seu mercado são de aproximadamente R$${perdasPorRupturaNoLucroBruto} no seu lucro bruto, com a nossa solução, esta perda pode diminuir em até R$${diminuicaoPerdasPorRupturaNoLucroBruto}.<br><br>Você vendeu aproximadamente neste mês R$${ganhosPorMes}, porém por não ter um produto específico na gôndola, R$${ganhosPerdidosPorMes} deixaram de ser gastos por clientes e R$${ganhosAdiadosPorMes} em produtos tiveram a sua compra adiada.`;
+    }
+</script>
