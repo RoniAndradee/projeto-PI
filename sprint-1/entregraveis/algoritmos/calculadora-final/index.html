@@ -4,23 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Simulador Financeiro Murilo</title>
-    <title>Tela de Simulador Financeiro Murilo</title>
+    <title>Tela de Simulador Financeiro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <div class="container">
         <div class="card">
-            Digite o nome do seu mercado: <input type="text" id="inputNome"><br><br>
-            Digite o faturamento mensal do seu mercado: <input type="number" id="inputFaturamento"><br><br>
+            Digite o nome do seu mercado: <input type="text" id="inputNome">
+            Digite o faturamento mensal do seu mercado: <input type="number" id="inputFaturamento">
 
-            Digite aproximadamente a quantidade de <br>pessoas que entram no seu mercado por mês: <input type="number"
-                id="inputPessoasPorMes"><br><br>
-            Digite quantos produtos aproximadamente <br>uma pessoa compra em média: <input type="number"
-                id="inputProdutosPorPessoa"><br><br>
-
-            <button onclick="calcular()">SIMULAR DADOS</button><br><br>
+            Digite aproximadamente a quantidade de <br>pessoas que entram no seu mercado por mês: <input type="number" id="inputPessoasPorMes">
+            Digite quantos produtos aproximadamente <br>uma pessoa compra em média: <input type="number" id="inputProdutosPorPessoa">
+            <button onclick="calcular()">Simular Dados</button>
 
             <div id="divMensagem" class="mensagem"></div>
         </div>
@@ -45,9 +41,9 @@
         var perdasProdutosPorMes = ganhosProdutosPorMes * (0.05 * 0.42);
         var ganhosEsperados = perdasFaturamento - perdasEsperadasFaturamento;
 
-        divMensagem.innerHTML = `Após a analise de dados do mercado <b>${nome}</b>, chegamos às seguintes conclusões:<br>
+        divMensagem.innerHTML = `<h1>Simulação</h1> Após a analise de dados do mercado <b>${nome}</b>, chegamos às seguintes conclusões:<br>
         Seu mercado teve uma perda de faturamento mensal de aproximadamente R$<b>${perdasFaturamento}</b> em função da ruptura, que corresponde a <b>${percentualPerdas * 100}%</b>.<br>
-        Cerca de <b>${percentualPerdasVendas * 100}%</b> das pessoas que não encontram um produto na gôndola não compram nenhum produto parecido ou de outra marca, isso corresponde à aproximadamente <b>${perdasProdutosPorMes}</b> produtos.<br>
+        Cerca de <b>${percentualPerdasVendas * 100}%</b> das pessoas que não encontram um produto na gôndola não compram nenhum produto parecido ou de outra marca, isso nos mostra que aproximadamente <b>${perdasProdutosPorMes}</b> produtos deixaram de ser vendidos.<br>
         Após adquirir nosso produto, o aumento do faturamento mensal esperado é de R$<b>${ganhosEsperados}</b>.`;
     }
 </script>
